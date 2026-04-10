@@ -230,3 +230,19 @@ nav {
 .retour-accueil:hover {
   text-decoration: underline;
 }
+
+.lien-inscription {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #666;
+}
+
+.lien-inscription a {
+  color: var(--rose);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.lien-inscription a:hover {
+  text-decoration: underline;
+}
