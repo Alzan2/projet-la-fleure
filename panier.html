@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier - FleurShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-gauche">
+    <span class="nav-logo">FleurShop</span>
+  </div>
+  <div class="nav-droite">
+    <a href="index.html" class="btn-nav">Accueil</a>
+    <a href="panier.html" class="btn-nav actif">Panier</a>
+    <a href="login.html" class="btn-nav btn-rose">Connexion</a>
+  </div>
+</nav>
+
+<div class="page-panier">
+  <div class="contenu-panier">
+    
+    <div id="panier-vide" class="panier-vide">
+      <h2>Votre panier est vide</h2>
+      <p>Ajoutez des produits depuis la page d'accueil</p>
+      <a href="index.html" class="btn-continuer">Continuer les achats</a>
+    </div>
+
+    <div id="panier-rempli" style="display: none;">
+      <div id="liste-articles"></div>
+
+      <div class="total-section">
+        <div class="total-ligne">
+          <span>Sous-total</span>
+          <span id="total-prix">0.00 EUR</span>
+        </div>
+        <button class="btn-commande" onclick="passerCommande()">Passer la commande</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
