@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FleurShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+
+function filtrerPar(categorie, bouton) {
+
+  // 1. Changer le bouton actif
+  var boutons = document.querySelectorAll(".btn-filtre");
+  for (var i = 0; i < boutons.length; i++) {
+    boutons[i].classList.remove("actif");
+  }
+  bouton.classList.add("actif");
+
+  // 2. Récupérer toutes les cartes
+  var cartes = document.querySelectorAll(".carte-produit");
+
+  // 3. Afficher ou cacher selon la categorie
+  for (var j = 0; j < cartes.length; j++) {
+    var badge = cartes[j].querySelector(".badge-categorie");
+    var categoriecarte = badge.textContent;
+
+    if (categorie == "tous") {
+      cartes[j].style.display = "block";
+    } else if (categoriecarte == categorie) {
+      cartes[j].style.display = "block";
+    } else {
+      cartes[j].style.display = "none";
+    }
+  }
+}
+
+</script>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-gauche">
+    <span class="nav-logo">🌸 FleurShop</span>
+  </div>
+  <div class="nav-droite">
+    <button class="btn-nav" onclick="afficherPage('accueil')">Accueil</button>
+    <button class="btn-nav" onclick="afficherPage('panier')">Panier</button>
+    <button class="btn-nav btn-rose" onclick="window.location.href='login.html'">Connexion</button>
+  </div>
+</nav>
+<!-- ↑ nav fermée ici ✅ -->
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Bienvenue chez FleurShop 🌸</h1>
+  <p>Découvrez notre collection de fleurs et plantes</p>
+</div>
+
+<!-- FILTRES + RECHERCHE -->
+<div class="barre-filtres">
+  <div class="groupe-filtres">
+    <button class="btn-filtre actif" onclick="filtrerPar('tous', this)">Tous les produits</button>
+    <button class="btn-filtre" onclick="filtrerPar('Bulbes', this)">Bulbes</button>
+    <button class="btn-filtre" onclick="filtrerPar('Plantes a massif', this)">Plantes à massif</button>
+    <button class="btn-filtre" onclick="filtrerPar('Rosiers', this)">Rosiers</button>
+  </div>
+  <div class="zone-recherche">
+    <span class="icone-loupe"></span>
+    <input type="text" id="champ-recherche" placeholder="Rechercher des fleurs..."
+           oninput="rechercherProduit()">
+    <div id="liste-suggestions"></div>
+  </div>
+</div>
+
+<!-- GRILLE PRODUITS -->
+<div class="section-produits">
+  <div id="grille-produits" class="grille-produits">
+
+    <!-- Carte 1 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Begonias">
+        <span class="badge-categorie">Bulbes</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : b01</div>
+        <div class="carte-nom">5 bulbes de begonias</div>
+        <div class="carte-bas">
+          <span class="carte-prix">5.00 EUR</span>
+          <span class="carte-stock">Stock : 125</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Dahlias">
+        <span class="badge-categorie">Bulbes</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : b02</div>
+        <div class="carte-nom">10 bulbes de dahlias</div>
+        <div class="carte-bas">
+          <span class="carte-prix">12.00 EUR</span>
+          <span class="carte-stock">Stock : 100</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Glaieuls">
+        <span class="badge-categorie">Bulbes</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : b03</div>
+        <div class="carte-nom">50 glaieuls</div>
+        <div class="carte-bas">
+          <span class="carte-prix">9.00 EUR</span>
+          <span class="carte-stock">Stock : 98</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Marguerites">
+        <span class="badge-categorie">Plantes a massif</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : m01</div>
+        <div class="carte-nom">Lot de 3 marguerites</div>
+        <div class="carte-bas">
+          <span class="carte-prix">5.00 EUR</span>
+          <span class="carte-stock">Stock : 52</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 5 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Pensees">
+        <span class="badge-categorie">Plantes a massif</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : m02</div>
+        <div class="carte-nom">Bouquet de 6 pensees</div>
+        <div class="carte-bas">
+          <span class="carte-prix">6.00 EUR</span>
+          <span class="carte-stock">Stock : 45</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 6 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Plantes a massif">
+        <span class="badge-categorie">Plantes a massif</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : m03</div>
+        <div class="carte-nom">Melange de 10 plantes a massif</div>
+        <div class="carte-bas">
+          <span class="carte-prix">15.00 EUR</span>
+          <span class="carte-stock">Stock : 21</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 7 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Rosier grandes fleurs">
+        <span class="badge-categorie">Rosiers</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : r01</div>
+        <div class="carte-nom">Pied special grandes fleurs</div>
+        <div class="carte-bas">
+          <span class="carte-prix">20.00 EUR</span>
+          <span class="carte-stock">Stock : 35</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 8 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Rosier parfume">
+        <span class="badge-categorie">Rosiers</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : r02</div>
+        <div class="carte-nom">Rosier parfume selectionne</div>
+        <div class="carte-bas">
+          <span class="carte-prix">9.00 EUR</span>
+          <span class="carte-stock">Stock : 78</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 9 -->
+    <div class="carte-produit">
+      <div class="carte-image">
+        <img src="" alt="Rosier arbuste">
+        <span class="badge-categorie">Rosiers</span>
+      </div>
+      <div class="carte-corps">
+        <div class="carte-ref">Ref : r03</div>
+        <div class="carte-nom">Rosier arbuste</div>
+        <div class="carte-bas">
+          <span class="carte-prix">8.00 EUR</span>
+          <span class="carte-stock">Stock : 29</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
