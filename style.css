@@ -1,0 +1,156 @@
+/* ===== VARIABLES ===== */
+:root {
+  --rose: #e91e8c;
+  --rose-fonce: #c4177a;
+  --noir: #1a1a1a;
+  --gris: #e5e7eb;
+  --gris-clair: #f9f9f9;
+  --texte-discret: #6b7280;
+}
+
+/* ===== BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: var(--gris-clair);
+  color: var(--noir);
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  background-color: white;
+  border-bottom: 1px solid var(--gris);
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--rose);
+}
+
+.nav-droite {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-nav {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--noir);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-nav:hover { background-color: #f3f4f6; }
+
+.btn-rose { background-color: var(--noir); color: white; }
+.btn-rose:hover { background-color: #374151; }
+
+/* ===== HERO ===== */
+.hero {
+  background-color: var(--rose);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 { font-size: 36px; margin-bottom: 10px; }
+.hero p  { font-size: 16px; opacity: 0.9; }
+
+/* ===== FILTRES + RECHERCHE ===== */
+.barre-filtres {
+  background-color: white;
+  border-bottom: 1px solid var(--gris);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.groupe-filtres { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn-filtre {
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--gris);
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-filtre:hover { border-color: var(--rose); color: var(--rose); }
+
+.actif { background-color: var(--noir); color: white; border-color: var(--noir); }
+
+.zone-recherche { position: relative; }
+
+.zone-recherche input {
+  padding: 8px 16px 8px 34px;
+  border-radius: 20px;
+  border: 1.5px solid var(--gris);
+  font-size: 14px;
+  width: 260px;
+  outline: none;
+}
+
+.zone-recherche input:focus { border-color: var(--rose); }
+
+.icone-loupe {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+#liste-suggestions {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid var(--gris);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 50;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+/* ===== GRILLE PRODUITS ===== */
+.section-produits { padding: 24px 20px; }
+
+.grille-produits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .grille-produits { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 30px 15px; }
+  .hero h1 { font-size: 24px; }
+  .barre-filtres { flex-direction: column; align-items: stretch; }
+  .zone-recherche input { width: 100%; }
+  .grille-produits { grid-template-columns: 1fr; }
+}
